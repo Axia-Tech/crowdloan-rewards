@@ -1,0 +1,61 @@
+[package]
+authors = ["PureStake"]
+edition = "2018"
+name = "pallet-crowdloan-rewards"
+version = '0.6.0'
+description = "Reward citizens who participated in a crowdloan to acquire a allychain slot o nthe backing relay chain."
+
+[dependencies]
+axia-scale-codec = { git = "https://github.com/axia-tech/axia-scale-codec", branch = "v2.3.1", version = "2.3.1", default-features = false}
+serde = { version = "1.0.101", optional = true, features = ["derive"], default-features = false }
+log = { version = "0.4", default-features = false }
+scale-info = { git = "https://github.com/axia-tech/scale-info", branch = "v1.0.0", version = "1.0.0", default-features = false, features = ["derive"] }
+
+frame-support = { git = "https://github.com/axia-tech/axlib", default-features = false, branch = "dev" }
+frame-system = { git = "https://github.com/axia-tech/axlib", default-features = false, branch = "dev" }
+sp-core = { git = "https://github.com/axia-tech/axlib", default-features = false, branch = "dev" }
+sp-runtime = { git = "https://github.com/axia-tech/axlib", default-features = false, branch = "dev" }
+sp-std = { git = "https://github.com/axia-tech/axlib", default-features = false, branch = "dev" }
+sp-io = { git = "https://github.com/axia-tech/axlib", default-features = false, branch = "dev" }
+pallet-balances = { git = "https://github.com/axia-tech/axlib", default-features = false, branch = "dev" }
+pallet-utility = { git = "https://github.com/axia-tech/axlib", default-features = false, branch = "dev" }
+frame-benchmarking = { git = "https://github.com/axia-tech/axlib", default-features = false, branch = "dev", optional = true }
+ed25519-dalek = { version = "1.0.1", default-features = false, features = ["u64_backend", "alloc"], optional = true }
+sp-trie = { git = "https://github.com/axia-tech/axlib", default-features = false, branch = "dev", optional = true }
+
+# These cumulus dependencies to be removed with https://github.com/PureStake/crowdloan-rewards/pull/44
+cumulus-primitives-core = { git = "https://github.com/axia-tech/cumulus", default-features = false, branch = "master", optional = true }
+cumulus-pallet-allychain-system = { git = "https://github.com/axia-tech/cumulus", default-features = false, branch = "master", optional = true }
+cumulus-primitives-allychain-inherent = { git = "https://github.com/axia-tech/cumulus", default-features = false, branch = "master", optional = true }
+
+[dev-dependencies]
+cumulus-test-relay-sproof-builder = { git = "https://github.com/axia-tech/cumulus", branch = "master" }
+
+[features]
+default = ["std"]
+std = [
+    "pallet-balances/std",
+    "axia-scale-codec/std",
+    "pallet-utility/std",
+    "frame-benchmarking/std",
+    "frame-support/std",
+    "frame-system/std",
+    "sp-core/std",
+    "sp-runtime/std",
+    "serde",
+    "log/std",
+    "sp-std/std",
+    "sp-io/std",
+    "cumulus-pallet-allychain-system/std",
+    "cumulus-primitives-core/std",
+    "cumulus-primitives-allychain-inherent/std",
+    "scale-info/std",
+]
+runtime-benchmarks = [
+    "frame-benchmarking",
+    "sp-trie",
+    "ed25519-dalek",
+    "cumulus-primitives-core",
+    "cumulus-pallet-allychain-system",
+    "cumulus-primitives-allychain-inherent",
+]
