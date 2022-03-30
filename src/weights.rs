@@ -21,7 +21,7 @@
 //! EXECUTION: Some(Wasm), WASM-EXECUTION: Compiled, CHAIN: Some("dev"), DB CACHE: 128
 
 // Executed Command:
-// ./target/release/axtend
+// ./target/release/Axtend
 // benchmark
 // --chain
 // dev
@@ -59,9 +59,9 @@ pub trait WeightInfo {
 	fn change_association_with_relay_keys(x: u32) -> Weight;
 }
 
-/// Weights for pallet_crowdloan_rewards using the Axlib node and recommended hardware.
-pub struct AxlibWeight<T>(PhantomData<T>);
-impl<T: frame_system::Config> WeightInfo for AxlibWeight<T> {
+/// Weights for pallet_crowdloan_rewards using the Substrate node and recommended hardware.
+pub struct SubstrateWeight<T>(PhantomData<T>);
+impl<T: frame_system::Config> WeightInfo for SubstrateWeight<T> {
 	fn initialize_reward_vec(x: u32) -> Weight {
 		(143_109_000 as Weight)
 			// Standard Error: 21_000

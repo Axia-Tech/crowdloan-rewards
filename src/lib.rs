@@ -51,7 +51,7 @@
 //! * **ReadingRelayState**
 //!
 //! The most elegant, but most complex solution would be for the para to read the contributions
-//! directly from the relay state. Blocked by https://github.com/axia-tech/cumulus/issues/320 so
+//! directly from the relay state. Blocked by https://github.com/axiatech/cumulus/issues/320 so
 //! I won't pursue it further right now. I can't decide whether that would really add security /
 //! trustlessness, or is just a sexy blockchain thing to do. Contributors can always audit the
 //! democracy proposal and make sure their contribution is in it, so in that sense reading relay state
@@ -89,7 +89,9 @@ pub mod pallet {
 	use sp_std::collections::btree_map::BTreeMap;
 	use sp_std::vec;
 	use sp_std::vec::Vec;
+
 	#[pallet::pallet]
+	#[pallet::without_storage_info]
 	// The crowdloan rewards pallet
 	pub struct Pallet<T>(PhantomData<T>);
 
@@ -154,7 +156,7 @@ pub mod pallet {
 
 	/// Stores info about the rewards owed as well as how much has been vested so far.
 	/// For a primer on this kind of design, see the recipe on compounding interest
-	/// https://axlib.dev/recipes/fixed-point.html#continuously-compounding
+	/// https://substrate.dev/recipes/fixed-point.html#continuously-compounding
 	#[derive(Default, Clone, Encode, Decode, RuntimeDebug, PartialEq, scale_info::TypeInfo)]
 	#[scale_info(skip_type_params(T))]
 	pub struct RewardInfo<T: Config> {

@@ -16,14 +16,14 @@ There are good docs in the crate. For now see them in `src/lib.rs`.
 
 ## Using this pallet in your allychain runtime
 
-First you will need to make sure your project is using the same Axlib dependencies as this
+First you will need to make sure your project is using the same Substrate dependencies as this
 pallet.
 
 In your `Cargo.toml` file:
 ```toml
 [dependencies]
 # --snip--
-pallet-crowdloan-rewards = { git = "https://github.com/purestake/crowdloan-rewards", default-features = false, branch = "main" }
+pallet-crowdloan-rewards = { git = "https://github.com/axia-tech/crowdloan-rewards", default-features = false, branch = "main" }
 
 [features]
 default = ['std']

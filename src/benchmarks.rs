@@ -1,6 +1,6 @@
 #![cfg(feature = "runtime-benchmarks")]
 
-use crate::{BalanceOf, Call, Pallet, WRAPPED_BYTES_PREFIX, WRAPPED_BYTES_POSTFIX};
+use crate::{BalanceOf, Call, Pallet, WRAPPED_BYTES_POSTFIX, WRAPPED_BYTES_PREFIX};
 use cumulus_pallet_allychain_system::Pallet as RelayPallet;
 use cumulus_primitives_core::{
 	relay_chain::{v1::HeadData, BlockNumber as RelayChainBlockNumber},
@@ -15,7 +15,7 @@ use frame_support::{
 	traits::{Currency, Get, OnFinalize, OnInitialize},
 };
 use frame_system::RawOrigin;
-use axia_scale_codec::Encode;
+use parity_scale_codec::Encode;
 use sp_core::{
 	crypto::{AccountId32, UncheckedFrom},
 	ed25519,
